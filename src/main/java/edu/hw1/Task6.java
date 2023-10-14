@@ -25,9 +25,9 @@ public class Task6 {
 
     public static int toInteger(Integer[] v) {
         int integer = 0;
-        for (int i = 0; i < v.length; i++) {
+        for (Integer value : v) {
             integer *= 10;
-            integer += v[i];
+            integer += value;
         }
         return integer;
     }
