@@ -5,20 +5,21 @@ import java.util.Collections;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@SuppressWarnings("MagicNumber")
 public class Task6 {
     private Task6() {
     }
 
     private final static Logger LOGGER = LogManager.getLogger();
+    static private final int DIGITS_IN_COUNT_SYSTEM = 10;
+    static private final int KAPREKARS_CONST = 6174;
 
-    @SuppressWarnings("ParameterAssignment")
-    public static int getReversed(int n) {
+    public static int getReversed(int number) {
+        int n = number;
         int reverse = 0;
         while (n > 0) {
-            reverse *= 10;
-            reverse += n % 10;
-            n /= 10;
+            reverse *= DIGITS_IN_COUNT_SYSTEM;
+            reverse += n % DIGITS_IN_COUNT_SYSTEM;
+            n /= DIGITS_IN_COUNT_SYSTEM;
         }
         return reverse;
     }
@@ -26,7 +27,7 @@ public class Task6 {
     public static int toInteger(Integer[] v) {
         int integer = 0;
         for (Integer value : v) {
-            integer *= 10;
+            integer *= DIGITS_IN_COUNT_SYSTEM;
             integer += value;
         }
         return integer;
@@ -45,7 +46,7 @@ public class Task6 {
 
     public static int countK(int cin) {
 
-        if (cin == 6174) {
+        if (cin == KAPREKARS_CONST) {
             return ans;
         }
         LOGGER.info(cin);
@@ -56,9 +57,7 @@ public class Task6 {
         Arrays.sort(digits, Collections.reverseOrder());
         int sorted = toInteger(digits);
         int reversed = getReversed(sorted);
-        LOGGER.info(sorted);
-        LOGGER.info(reversed);
-        LOGGER.info('\n');
+        LOGGER.info("sorted: {}, reversed: {}\n", sorted, reversed);
         countK(sorted - reversed);
 
         return ans;

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static edu.hw1.Task3.isNestable;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Task3_tests {
+public class Task3Test {
 
     @Test
     @DisplayName("Тест 1")

@@ -5,15 +5,16 @@ public class Task2 {
     private Task2() {
     }
 
-    @SuppressWarnings("MagicNumber")
+    static private final int DIGITS_IN_COUNT_SYSTEM = 10;
+
     public static int countDigits(int cin) {
 
         int ans = 1;
         int number = cin;
 
-        while (number / 10 != 0) {
+        while (number / DIGITS_IN_COUNT_SYSTEM != 0) {
             ans++;
-            number /= 10;
+            number /= DIGITS_IN_COUNT_SYSTEM;
         }
         return ans;
     }

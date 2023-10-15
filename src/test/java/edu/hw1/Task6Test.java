@@ -9,7 +9,7 @@ import static edu.hw1.Task6.toArray;
 import static edu.hw1.Task6.toInteger;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Task6_tests {
+public class Task6Test {
 
     @Test
     @DisplayName("Проверка реверса")

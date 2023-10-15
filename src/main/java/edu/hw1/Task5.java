@@ -8,8 +8,9 @@ public class Task5 {
     }
 
     private final static Logger LOGGER = LogManager.getLogger();
+    static private final int DIGITS_IN_COUNT_SYSTEM = 10;
 
-    @SuppressWarnings("MagicNumber")
+
     public static boolean isPalindromeDescendant(int cin) {
         String str = Integer.toString(cin);
         boolean ok = true;
@@ -33,7 +34,7 @@ public class Task5 {
                 int digit = 0;
                 digit += str.charAt(i) - '0';
                 digit += str.charAt(i + 1) - '0';
-                number *= (int) Math.pow(10, (digit / 10 + 1));
+                number *= (int) Math.pow(DIGITS_IN_COUNT_SYSTEM, (digit / DIGITS_IN_COUNT_SYSTEM + 1));
                 number += digit;
             }
             LOGGER.info(number);

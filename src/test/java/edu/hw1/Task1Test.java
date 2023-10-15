@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class Task1_tests {
+public class Task1Test {
     @Test
     @DisplayName("1 минута")
     void test1() {
@@ -80,7 +80,7 @@ public class Task1_tests {
     @DisplayName("Только секунды")
     void test6() {
         // given
-        String time = "0:10";
+        String time = "00:10";
 
         // when
         int seconds = minutesToSeconds(time);
@@ -88,5 +88,19 @@ public class Task1_tests {
         // then
         assertThat(seconds)
             .isEqualTo(10);
+    }
+
+    @Test
+    @DisplayName("0 минут 0 секунд")
+    void test7() {
+        // given
+        String time = "00:00";
+
+        // when
+        int seconds = minutesToSeconds(time);
+
+        // then
+        assertThat(seconds)
+            .isEqualTo(0);
     }
 }

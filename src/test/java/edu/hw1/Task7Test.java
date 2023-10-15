@@ -6,7 +6,7 @@ import static edu.hw1.Task7.rotateLeft;
 import static edu.hw1.Task7.rotateRight;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Task7_tests {
+public class Task7Test {
 
     @Test
     @DisplayName("Левый 1")

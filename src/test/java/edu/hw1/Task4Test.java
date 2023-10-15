@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static edu.hw1.Task4.fixString;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Task4_tests {
+public class Task4Test {
     @Test
     @DisplayName("Тест 1")
     void test1() {
