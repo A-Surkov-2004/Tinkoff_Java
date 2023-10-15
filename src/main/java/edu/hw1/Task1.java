@@ -8,6 +8,7 @@ class Task1 {
     }
 
     static private final int SECONDS_IN_MINUTE = 60;
+    static private final int MINIMUM_LENGTH = 5;
 
     private final static Logger LOGGER = LogManager.getLogger();
 
@@ -16,10 +17,10 @@ class Task1 {
         int minutes;
         int seconds;
 
-        if(time.length() >=5){
-        String [] timeSep = time.split(":");
-        minutes = Integer.parseInt(timeSep[0]);
-        seconds = Integer.parseInt(timeSep[1]);
+        if (time.length() >= MINIMUM_LENGTH) {
+            String[] timeSep = time.split(":");
+            minutes = Integer.parseInt(timeSep[0]);
+            seconds = Integer.parseInt(timeSep[1]);
         } else {
             return -1;
         }
