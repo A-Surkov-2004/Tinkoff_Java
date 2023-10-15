@@ -19,7 +19,6 @@ public class Task7 {
         shiftLeft = shiftLeft % size;
         int transfer = (int) (n % Math.pow(2, shiftLeft));
         int remains = (n >> shiftLeft);
-        int ans = (int) (remains + transfer * Math.pow(2, size - shiftLeft));
-        return ans;
+        return (int) (remains + transfer * Math.pow(2, size - shiftLeft));
     }
 }
