@@ -7,9 +7,8 @@ public class Task5 {
     private Task5() {
     }
 
-    private final static Logger LOGGER = LogManager.getLogger();
     static private final int DIGITS_IN_COUNT_SYSTEM = 10;
-
+    private final static Logger LOGGER = LogManager.getLogger();
 
     public static boolean isPalindromeDescendant(int cin) {
         String str = Integer.toString(cin);

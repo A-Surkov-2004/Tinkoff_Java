@@ -4,7 +4,7 @@ public class Task3 {
     private Task3() {
     }
 
-    static int[] minMax(int[] v) {
+    static private int[] minMax(int[] v) {
         int minv = v[0];
         int maxv = v[0];
 

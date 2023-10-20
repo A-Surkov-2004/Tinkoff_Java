@@ -9,9 +9,9 @@ public class Task6 {
     private Task6() {
     }
 
-    private final static Logger LOGGER = LogManager.getLogger();
     static private final int DIGITS_IN_COUNT_SYSTEM = 10;
     static private final int KAPREKARS_CONST = 6174;
+    private final static Logger LOGGER = LogManager.getLogger();
 
     public static int getReversed(int number) {
         int n = number;
