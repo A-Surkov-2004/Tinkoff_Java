@@ -11,9 +11,10 @@ public class ConsoleHangmanTest {
         // given
         String word;
         ConsoleHangman hangman = new ConsoleHangman();
+        Session session = new Session(5);
 
         // when
-        word = hangman.getWord();
+        word = session.getWord();
 
         // then
         assertThat(word.length())
@@ -25,15 +26,16 @@ public class ConsoleHangmanTest {
     void test2() {
         // given
         ConsoleHangman hangman = new ConsoleHangman();
+        ConsoleHangman.Game game = new ConsoleHangman.Game();
+        game.CurrentSession.word = "abcd";
+        game.currentWord = new char[] {'*', '*', '*', '*'};
         String guess = "a";
-        hangman.word = "abcd";
-        hangman.currentWord = new char[] {'*', '*', '*', '*'};
 
         // when
-        hangman.guessing(guess);
+        game.guessing(guess);
 
         // then
-        assertThat(hangman.currentWord)
+        assertThat(game.currentWord)
             .containsExactly('a', '*', '*', '*');
     }
 
@@ -42,15 +44,17 @@ public class ConsoleHangmanTest {
     void test3() {
         // given
         ConsoleHangman hangman = new ConsoleHangman();
+        ConsoleHangman.Game game = new ConsoleHangman.Game();
+        Session session = new Session(5);
+        game.CurrentSession.word = "abcd";
+        game.currentWord = new char[] {'*', '*', '*', '*'};
         String guess = "d";
-        hangman.word = "abcd";
-        hangman.currentWord = new char[] {'*', '*', '*', '*'};
 
         // when
-        hangman.guessing(guess);
+        game.guessing(guess);
 
         // then
-        assertThat(hangman.currentWord)
+        assertThat(game.currentWord)
             .containsExactly('*', '*', '*', 'd');
     }
 
@@ -59,16 +63,18 @@ public class ConsoleHangmanTest {
     void test4() {
         // given
         ConsoleHangman hangman = new ConsoleHangman();
-        String guess = "a";
-        hangman.word = "aaaa";
-        hangman.currentWord = new char[] {'*', '*', '*', '*'};
+        ConsoleHangman.Game game = new ConsoleHangman.Game();
+        Session session = new Session(5);
+        game.CurrentSession.word = "dddd";
+        game.currentWord = new char[] {'*', '*', '*', '*'};
+        String guess = "d";
 
         // when
-        hangman.guessing(guess);
+        game.guessing(guess);
 
         // then
-        assertThat(hangman.currentWord)
-            .containsExactly('a', 'a', 'a', 'a');
+        assertThat(game.currentWord)
+            .containsExactly('d', 'd', 'd', 'd');
     }
 
     @Test
@@ -76,11 +82,12 @@ public class ConsoleHangmanTest {
     void test5() {
         // given
         ConsoleHangman hangman = new ConsoleHangman();
-        hangman.unguessed = 0;
-        hangman.currentWord = new char[] {'*', '*', '*', '*'};
+        ConsoleHangman.Game game = new ConsoleHangman.Game();
+        Console console = new Console();
+        game.unguessed = 0;
 
         // when
-        hangman.winOrLost();
+        console.winOrLost(game.unguessed);
 
         // then
     }
@@ -90,10 +97,12 @@ public class ConsoleHangmanTest {
     void test6() {
         // given
         ConsoleHangman hangman = new ConsoleHangman();
-        hangman.unguessed = 1;
+        ConsoleHangman.Game game = new ConsoleHangman.Game();
+        Console console = new Console();
+        game.unguessed = 1;
 
         // when
-        hangman.winOrLost();
+        console.winOrLost(game.unguessed);
 
         // then
     }
