@@ -7,18 +7,19 @@ import org.apache.logging.log4j.Logger;
 
 public class ConsoleHangman {
     private final static String EXIT_WORD = "pass";
+    private final static int MAX_ATTEMPTS = 5;
     private final static Logger LOGGER = LogManager.getLogger();
 
     public static class Game {
         int unguessed;
-        Session CurrentSession;
+        Session currentSession;
         public char[] currentWord;
         Console console;
 
         Game() {
-            CurrentSession = new Session(5);
-            unguessed = CurrentSession.word.length();
-            this.currentWord = new char[CurrentSession.word.length()];
+            currentSession = new Session(MAX_ATTEMPTS);
+            unguessed = currentSession.word.length();
+            this.currentWord = new char[currentSession.word.length()];
             Arrays.fill(this.currentWord, '*');
             console = new Console();
         }
@@ -26,8 +27,8 @@ public class ConsoleHangman {
         public boolean guessing(String guess) {
             int lastIndex = 0;
             boolean changed = false;
-            while (lastIndex < CurrentSession.word.length()) {
-                lastIndex = CurrentSession.word.toLowerCase().indexOf(guess, lastIndex);
+            while (lastIndex < currentSession.word.length()) {
+                lastIndex = currentSession.word.toLowerCase().indexOf(guess, lastIndex);
 
                 if (lastIndex == -1) {
                     break;
@@ -47,7 +48,7 @@ public class ConsoleHangman {
         public void run() {
             int attempt = 0;
 
-            while (attempt < CurrentSession.maxAttempts && unguessed != 0) {
+            while (attempt < currentSession.maxAttempts && unguessed != 0) {
                 console.printCWord(currentWord);
                 String guess = console.getGuess();
                 if (Objects.equals(guess, EXIT_WORD)) {
@@ -60,7 +61,7 @@ public class ConsoleHangman {
                     LOGGER.info("Hit!");
                 } else {
                     attempt++;
-                    LOGGER.info("Missed, mistake " + attempt + " out of " + CurrentSession.maxAttempts);
+                    LOGGER.info("Missed, mistake " + attempt + " out of " + currentSession.maxAttempts);
                 }
             }
             console.printCWord(currentWord);

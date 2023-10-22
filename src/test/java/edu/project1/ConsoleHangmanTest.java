@@ -27,7 +27,7 @@ public class ConsoleHangmanTest {
         // given
         ConsoleHangman hangman = new ConsoleHangman();
         ConsoleHangman.Game game = new ConsoleHangman.Game();
-        game.CurrentSession.word = "abcd";
+        game.currentSession.word = "abcd";
         game.currentWord = new char[] {'*', '*', '*', '*'};
         String guess = "a";
 
@@ -46,7 +46,7 @@ public class ConsoleHangmanTest {
         ConsoleHangman hangman = new ConsoleHangman();
         ConsoleHangman.Game game = new ConsoleHangman.Game();
         Session session = new Session(5);
-        game.CurrentSession.word = "abcd";
+        game.currentSession.word = "abcd";
         game.currentWord = new char[] {'*', '*', '*', '*'};
         String guess = "d";
 
@@ -65,7 +65,7 @@ public class ConsoleHangmanTest {
         ConsoleHangman hangman = new ConsoleHangman();
         ConsoleHangman.Game game = new ConsoleHangman.Game();
         Session session = new Session(5);
-        game.CurrentSession.word = "dddd";
+        game.currentSession.word = "dddd";
         game.currentWord = new char[] {'*', '*', '*', '*'};
         String guess = "d";
 
