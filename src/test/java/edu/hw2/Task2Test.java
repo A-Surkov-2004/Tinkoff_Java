@@ -1,7 +1,7 @@
 package edu.hw2;
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
-import org.assertj.core.data.Percentage;
+import edu.hw2.Task2.Square;
+import edu.hw2.Task2.Task2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,8 +16,8 @@ public class Task2Test {
     static Arguments[] rectangles() {
         Task2 t = new Task2();
         return new Arguments[]{
-            Arguments.of(t.new Rectangle(0,0)),
-            Arguments.of(t.new Square(0))
+            Arguments.of(new Task2.Rectangle(0, 0)),
+            Arguments.of(new Square(0))
         };
     }
 
@@ -37,7 +37,7 @@ public class Task2Test {
     void test2() {
         // given
         Task2 t = new Task2();
-        Task2.Square squa =  t.new Square(0);
+        Square squa =  new Square(0);
 
         // when
         squa = squa.setSide(30);

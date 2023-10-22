@@ -1,41 +1,64 @@
 package edu.hw2;
-import static org.assertj.core.api.Assertions.assertThat;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import edu.hw2.Task3.Task3;
+import edu.hw2.Task3.ConnectionManager;
+import edu.hw2.Task3.PopularCommandExecutor;
 
 public class Task3Test {
-/*
+    private final static Logger LOGGER = LogManager.getLogger();
+
     @Test
     @DisplayName("Стандартный")
     void test1() throws Exception {
-        Task3 t = new Task3();
-        Task3.PopularCommandExecutor executor = t.new PopularCommandExecutor(new Task3.ConnectionManager.DefaultConnectionManage(), 5);
-        executor.tryExecute("cmd");
+        PopularCommandExecutor executor =
+            new PopularCommandExecutor(new ConnectionManager.DefaultConnectionManage(), 5);
+        try {
+            executor.tryExecute("cmd");
+        } catch (Task3.ConnectionException e) {
+            LOGGER.info("Поймано исключение!");
+        }
     }
 
     @Test
     @DisplayName("Проблемный")
     void test2() throws Exception {
         Task3 t = new Task3();
-        Task3.PopularCommandExecutor executor = t.new PopularCommandExecutor(new Task3.ConnectionManager.FaultyConnectionManager(), 5);
-        executor.tryExecute("cmd");
+        PopularCommandExecutor executor =
+            new PopularCommandExecutor(new ConnectionManager.FaultyConnectionManager(), 5);
+        try {
+            executor.tryExecute("cmd");
+        } catch (Task3.ConnectionException e) {
+            LOGGER.info("Поймано исключение!");
+        }
     }
 
     @Test
     @DisplayName("Проблемный+ (no retry)")
     void test3() throws Exception {
-        Task3 t = new Task3();
-        Task3.PopularCommandExecutor executor = t.new PopularCommandExecutor(new Task3.ConnectionManager.FaultyConnectionManager(), 0);
-        executor.tryExecute("cmd");
+        PopularCommandExecutor executor =
+            new PopularCommandExecutor(new ConnectionManager.FaultyConnectionManager(), 0);
+        try {
+            executor.tryExecute("cmd");
+        } catch (Task3.ConnectionException e) {
+            LOGGER.info("Поймано исключение!");
+        }
     }
 
     @Test
-    @DisplayName("Проблемный 10x")
+    @DisplayName("Проблемный 100x")
     void test4() throws Exception {
-        Task3 t = new Task3();
-        Task3.PopularCommandExecutor executor = t.new PopularCommandExecutor(new Task3.ConnectionManager.FaultyConnectionManager(), 5);
-        for (int i = 0; i < 10; i++){executor.tryExecute("cmd");}
+        PopularCommandExecutor executor =
+            new PopularCommandExecutor(new ConnectionManager.FaultyConnectionManager(), 5);
+        try {
+            for (int i = 0; i < 100; i++) {
+                executor.tryExecute("cmd");
+            }
+        } catch (Task3.ConnectionException e) {
+            LOGGER.info("Поймано исключение!");
+        }
     }
-
- */
 }
