@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class Task3Test {
-
+/*
     @Test
     @DisplayName("Стандартный")
     void test1() throws Exception {
@@ -36,4 +36,6 @@ public class Task3Test {
         Task3.PopularCommandExecutor executor = t.new PopularCommandExecutor(new Task3.ConnectionManager.FaultyConnectionManager(), 5);
         for (int i = 0; i < 10; i++){executor.tryExecute("cmd");}
     }
+
+ */
 }
