@@ -88,7 +88,7 @@
         </module>
         <!--<module name="JavadocTagContinuationIndentation"/>-->
         <!--<module name="JavadocType">-->
-        <!--    <property name="scope" arg="public"/>-->
+        <!--    <property name="scope" value="public"/>-->
         <!--</module>-->
         <!-- <module name="JavadocVariable"/> -->
         <!-- <module name="MissingJavadocMethod"/> -->
@@ -103,13 +103,13 @@
         <!-- https://checkstyle.org/config_annotation.html -->
         <!--              Annotations                      -->
         <!-- <module name="AnnotationLocation">-->
-        <!--  <property name="id" arg="AnnotationLocationMostCases"/>-->
-        <!--  <property name="tokens" arg="CLASS_DEF, INTERFACE_DEF, ENUM_DEF, METHOD_DEF, CTOR_DEF"/>-->
+        <!--  <property name="id" value="AnnotationLocationMostCases"/>-->
+        <!--  <property name="tokens" value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF, METHOD_DEF, CTOR_DEF"/>-->
         <!-- </module>-->
         <!-- <module name="AnnotationLocation">-->
-        <!--  <property name="id" arg="AnnotationLocationVariables"/>-->
-        <!--  <property name="tokens" arg="VARIABLE_DEF"/>-->
-        <!--  <property name="allowSamelineMultipleAnnotations" arg="true"/>-->
+        <!--  <property name="id" value="AnnotationLocationVariables"/>-->
+        <!--  <property name="tokens" value="VARIABLE_DEF"/>-->
+        <!--  <property name="allowSamelineMultipleAnnotations" value="true"/>-->
         <!-- </module>-->
         <!-- <module name="AnnotationOnSameLine"/> -->
         <!-- <module name="AnnotationUseStyle"/> -->
