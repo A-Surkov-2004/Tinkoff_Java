@@ -19,12 +19,12 @@ public class Console {
         for (char i : currentWord) {
             printWord.append(i);
         }
-        LOGGER.info("The word: " + printWord);
+        LOGGER.trace("The word: {}", printWord);
     }
 
     String getGuess() {
         String guess = "";
-        LOGGER.info("Guess a letter: (or '" + EXIT_WORD + "' to end suffering)");
+        LOGGER.trace("Guess a letter: (or '{}' to end suffering)", EXIT_WORD);
         while (guess.length() != 1) {
             guess = IN.nextLine();
             if (Objects.equals(guess, EXIT_WORD)) {

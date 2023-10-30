@@ -1,16 +1,23 @@
 package edu.project1;
 
 public class Session {
-    public int maxAttempts;
-    public String word;
+    private final int maxAttempts;
+    private final String word;
 
-    Session(int maxAttempts) {
+    Session(int maxAttempts, String[] words) {
         this.maxAttempts = maxAttempts;
-        word = getWord();
+        word = getNewWord(words);
+    }
+
+    public String getNewWord(String[] words) {
+        return words[(int) (Math.random() * words.length)];
+    }
+
+    public int getMaxAttempts() {
+        return maxAttempts;
     }
 
     public String getWord() {
-        String[] words = new String[] {"Тинькофф", "Тетриандох", "Аксолотль", "Навохудоноссор"};
-        return words[(int) (Math.random() * words.length)];
+        return word;
     }
 }

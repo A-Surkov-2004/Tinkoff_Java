@@ -7,40 +7,40 @@ import org.apache.logging.log4j.Logger;
 
 public class ConsoleHangman {
     private final static String EXIT_WORD = "pass";
-    private final static int MAX_ATTEMPTS = 5;
+    private final static char BLANK = '*';
     private final static Logger LOGGER = LogManager.getLogger();
 
     public static class Game {
         int unguessed;
-        Session currentSession;
-        public char[] currentWord;
+        private final Session currentSession;
+        char[] currentWord;
         Console console;
 
-        Game() {
-            currentSession = new Session(MAX_ATTEMPTS);
-            unguessed = currentSession.word.length();
-            this.currentWord = new char[currentSession.word.length()];
-            Arrays.fill(this.currentWord, '*');
+        Game(int maxAttempts, String[] words) {
+            currentSession = new Session(maxAttempts, words);
+            unguessed = currentSession.getWord().length();
+            this.currentWord = new char[currentSession.getWord().length()];
+            Arrays.fill(this.currentWord, BLANK);
             console = new Console();
         }
 
         public boolean guessing(String guess) {
             int lastIndex = 0;
             boolean changed = false;
-            while (lastIndex < currentSession.word.length()) {
-                lastIndex = currentSession.word.toLowerCase().indexOf(guess, lastIndex);
+            while (lastIndex < currentSession.getWord().length() && lastIndex != -1) {
+                lastIndex = currentSession.getWord().toLowerCase().indexOf(guess, lastIndex);
 
-                if (lastIndex == -1) {
-                    break;
-                } else if (this.currentWord[lastIndex] != '*') {
-                    LOGGER.info("You already guessed it!");
+                if (lastIndex != -1) {
+                    if (this.currentWord[lastIndex] != BLANK) {
+                        LOGGER.info("You already guessed it!");
+                        lastIndex = -1;
+                    } else {
+                        this.currentWord[lastIndex] = guess.charAt(0);
+                        lastIndex++;
+                        this.unguessed--;
+                    }
                     changed = true;
-                    break;
                 }
-                this.currentWord[lastIndex] = guess.charAt(0);
-                lastIndex++;
-                this.unguessed--;
-                changed = true;
             }
             return changed;
         }
@@ -48,7 +48,7 @@ public class ConsoleHangman {
         public void run() {
             int attempt = 0;
 
-            while (attempt < currentSession.maxAttempts && unguessed != 0) {
+            while (attempt < currentSession.getMaxAttempts() && unguessed != 0) {
                 console.printCWord(currentWord);
                 String guess = console.getGuess();
                 if (Objects.equals(guess, EXIT_WORD)) {
@@ -61,7 +61,7 @@ public class ConsoleHangman {
                     LOGGER.info("Hit!");
                 } else {
                     attempt++;
-                    LOGGER.info("Missed, mistake " + attempt + " out of " + currentSession.maxAttempts);
+                    LOGGER.trace("Missed, mistake {} out of {}", attempt, currentSession.getMaxAttempts());
                 }
             }
             console.printCWord(currentWord);
@@ -69,11 +69,11 @@ public class ConsoleHangman {
         }
     }
 
- /* Раскомментить для игры (Run Current File)
+    /* Раскомментить для игры (Run Current File)
     public static void main(String[] args) {
-        ConsoleHangman hangman = new ConsoleHangman();
-        ConsoleHangman.Game game = new Game();
+        String[] words = new String[] {"Тинькофф", "Тетриандох", "Аксолотль", "Навохудоноссор"};
+        ConsoleHangman.Game game = new Game(5, words);
         game.run();
     }
-*/
+//*/
 }

@@ -10,24 +10,23 @@ public class ConsoleHangmanTest {
     void test1() {
         // given
         String word;
-        ConsoleHangman hangman = new ConsoleHangman();
-        Session session = new Session(5);
+        String[] words = new String[] {"Тест"};
+        Session session = new Session(5, words);
 
         // when
         word = session.getWord();
 
         // then
-        assertThat(word.length())
-            .isGreaterThan(0);
+        assertThat(word)
+            .isEqualTo("Тест");
     }
 
     @Test
     @DisplayName("Открытие первого символа")
     void test2() {
         // given
-        ConsoleHangman hangman = new ConsoleHangman();
-        ConsoleHangman.Game game = new ConsoleHangman.Game();
-        game.currentSession.word = "abcd";
+        String[] words = new String[] {"abcd"};
+        ConsoleHangman.Game game = new ConsoleHangman.Game(5, words);
         game.currentWord = new char[] {'*', '*', '*', '*'};
         String guess = "a";
 
@@ -43,10 +42,8 @@ public class ConsoleHangmanTest {
     @DisplayName("Открытие последнего символа")
     void test3() {
         // given
-        ConsoleHangman hangman = new ConsoleHangman();
-        ConsoleHangman.Game game = new ConsoleHangman.Game();
-        Session session = new Session(5);
-        game.currentSession.word = "abcd";
+        String[] words = new String[] {"abcd"};
+        ConsoleHangman.Game game = new ConsoleHangman.Game(5, words);
         game.currentWord = new char[] {'*', '*', '*', '*'};
         String guess = "d";
 
@@ -62,10 +59,8 @@ public class ConsoleHangmanTest {
     @DisplayName("Открытие нескольких символов")
     void test4() {
         // given
-        ConsoleHangman hangman = new ConsoleHangman();
-        ConsoleHangman.Game game = new ConsoleHangman.Game();
-        Session session = new Session(5);
-        game.currentSession.word = "dddd";
+        String[] words = new String[] {"dddd"};
+        ConsoleHangman.Game game = new ConsoleHangman.Game(5, words);
         game.currentWord = new char[] {'*', '*', '*', '*'};
         String guess = "d";
 
@@ -81,8 +76,8 @@ public class ConsoleHangmanTest {
     @DisplayName("Победа")
     void test5() {
         // given
-        ConsoleHangman hangman = new ConsoleHangman();
-        ConsoleHangman.Game game = new ConsoleHangman.Game();
+        String[] words = new String[] {"abcd"};
+        ConsoleHangman.Game game = new ConsoleHangman.Game(0, words);
         Console console = new Console();
         game.unguessed = 0;
 
@@ -96,8 +91,8 @@ public class ConsoleHangmanTest {
     @DisplayName("Поражение")
     void test6() {
         // given
-        ConsoleHangman hangman = new ConsoleHangman();
-        ConsoleHangman.Game game = new ConsoleHangman.Game();
+        String[] words = new String[] {"abcd"};
+        ConsoleHangman.Game game = new ConsoleHangman.Game(5, words);
         Console console = new Console();
         game.unguessed = 1;
 
