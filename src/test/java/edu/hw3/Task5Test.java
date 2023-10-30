@@ -1,5 +1,6 @@
 package edu.hw3;
 
+import edu.hw3.Task5.Task5;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -14,11 +15,12 @@ public class Task5Test {
         Task5 t5 = new Task5();
 
         // when
-        String[] ans = t5.parseContacts(s, method);
+        Task5.Contacts[] ans = t5.parseContacts(s, method);
 
         // then
+        Task5.Contacts[] rans = t5.parseContacts(new String[]{"Thomas Aquinas", "Rene Descartes", "David Hume", "John Locke"}, "");
         assertThat(ans)
-            .containsExactly("Thomas Aquinas", "Rene Descartes", "David Hume", "John Locke");
+            .isEqualTo(rans);
     }
     @Test
     @DisplayName("Убывание")
@@ -29,11 +31,12 @@ public class Task5Test {
         Task5 t5 = new Task5();
 
         // when
-        String[] ans = t5.parseContacts(s, method);
+        Task5.Contacts[] ans = t5.parseContacts(s, method);
 
         // then
+        Task5.Contacts[] rans = t5.parseContacts(new String[]{"Carl Gauss", "Leonhard Euler", "Paul Erdos"}, "");
         assertThat(ans)
-            .containsExactly("Carl Gauss", "Leonhard Euler", "Paul Erdos");
+            .isEqualTo(rans);
     }
     @Test
     @DisplayName("Семья")
@@ -44,11 +47,12 @@ public class Task5Test {
         Task5 t5 = new Task5();
 
         // when
-        String[] ans = t5.parseContacts(s, method);
+        Task5.Contacts[] ans = t5.parseContacts(s, method);
 
         // then
+        Task5.Contacts[] rans = t5.parseContacts(new String[]{"David Aquinas", "John Aquinas",  "Rene Aquinas", "Thomas Aquinas"}, "");
         assertThat(ans)
-            .containsExactly("David Aquinas", "John Aquinas",  "Rene Aquinas", "Thomas Aquinas");
+            .isEqualTo(rans);
     }
 
     @Test
@@ -60,11 +64,12 @@ public class Task5Test {
         Task5 t5 = new Task5();
 
         // when
-        String[] ans = t5.parseContacts(s, method);
+        Task5.Contacts[] ans = t5.parseContacts(s, method);
 
         // then
+        Task5.Contacts[] rans = t5.parseContacts(new String[]{"David", "John",  "Rene", "Thomas"}, "");
         assertThat(ans)
-            .containsExactly("David", "John",  "Rene", "Thomas");
+            .isEqualTo(rans);
     }
 
     @Test
@@ -76,11 +81,12 @@ public class Task5Test {
         Task5 t5 = new Task5();
 
         // when
-        String[] ans = t5.parseContacts(s, method);
+        Task5.Contacts[] ans = t5.parseContacts(s, method);
 
         // then
+        Task5.Contacts[] rans = t5.parseContacts(new String[]{"David", "Rene Descartes", "Thomas Gauss", "John Locke"}, "");
         assertThat(ans)
-            .containsExactly("David", "Rene Descartes", "Thomas Gauss", "John Locke");
+            .isEqualTo(rans);
     }
     @Test
     @DisplayName("Пустой")
@@ -91,7 +97,7 @@ public class Task5Test {
         Task5 t5 = new Task5();
 
         // when
-        String[] ans = t5.parseContacts(s, method);
+        Task5.Contacts[] ans = t5.parseContacts(s, method);
 
         // then
         assertThat(ans)
@@ -106,7 +112,7 @@ public class Task5Test {
         Task5 t5 = new Task5();
 
         // when
-        String[] ans = t5.parseContacts(s, method);
+        Task5.Contacts[] ans = t5.parseContacts(s, method);
 
         // then
         assertThat(ans)

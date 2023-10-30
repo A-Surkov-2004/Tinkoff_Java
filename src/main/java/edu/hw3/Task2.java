@@ -1,24 +1,24 @@
 package edu.hw3;
 
 import java.util.ArrayList;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.util.List;
 
 public class Task2 {
     Task2() {
     }
 
-    private final static Logger LOGGER = LogManager.getLogger();
-
-    public ArrayList<String> clusterize(String str) {
+    public List<String> clusterize(String str) {
+        if (str == null) {
+            return new ArrayList<>();
+        }
         StringBuilder element = new StringBuilder();
-        ArrayList<String> ans = new ArrayList<String>();
+        List<String> ans = new ArrayList<>();
         int opened = 0;
         for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
             if (ch == '(') {
                 opened++;
-            } else {
+            } else if (ch == ')') {
                 opened--;
             }
             element.append(ch);
@@ -27,7 +27,11 @@ public class Task2 {
                 element = new StringBuilder();
             }
         }
-        return ans;
+        if (opened == 0) {
+            return ans;
+        } else {
+            return List.of("");
+        }
     }
 
 }

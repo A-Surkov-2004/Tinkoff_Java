@@ -1,13 +1,8 @@
 package edu.hw3;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 public class Task1 {
     Task1() {
     }
-
-    private final static Logger LOGGER = LogManager.getLogger();
 
     public String atbash(String str) {
         StringBuilder printWord = new StringBuilder();

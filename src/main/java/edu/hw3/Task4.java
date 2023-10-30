@@ -1,73 +1,44 @@
 package edu.hw3;
 
+import java.util.TreeMap;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Task4 {
+    private final TreeMap<Integer, String> map;
+    private final static Logger LOGGER = LogManager.getLogger();
+
     Task4() {
+        this.map = getMap();
     }
 
-    static private final int M = 1000;
-    static private final int D = 500;
-    static private final int C = 100;
-    static private final int L = 50;
-    static private final int X = 10;
-    static private final int V = 5;
-    static private final int I = 1;
-
     @SuppressWarnings("MagicNumber")
+    TreeMap<Integer, String> getMap() {
+        TreeMap<Integer, String> rims = new TreeMap<>();
+        rims.put(1000, "M");
+        rims.put(900, "CM");
+        rims.put(500, "D");
+        rims.put(400, "CD");
+        rims.put(100, "C");
+        rims.put(90, "XC");
+        rims.put(50, "L");
+        rims.put(40, "XL");
+        rims.put(10, "X");
+        rims.put(9, "IX");
+        rims.put(5, "V");
+        rims.put(4, "IV");
+        rims.put(1, "I");
+        return rims;
+    }
+
     String convertToRoman(int sum) {
-        int csum = sum;
-        StringBuilder ans = new StringBuilder();
-        while (csum >= M) {
-            ans.append("M");
-            csum -= M;
+
+        int part = map.floorKey(sum);
+        LOGGER.trace("Сумма: {}", sum);
+        LOGGER.trace("Вычитаем: {}", part);
+        if (sum == part) {
+            return map.get(sum);
         }
-        while (csum >= M - C) {
-            ans.append("CM");
-            csum -= M - C;
-        }
-        while (csum >= D) {
-            ans.append("D");
-            csum -= D;
-        }
-        while (csum >= D - C) {
-            ans.append("CD");
-            csum -= D - C;
-        }
-        while (csum >= C) {
-            ans.append("C");
-            csum -= C;
-        }
-        while (csum >= C - X) {
-            ans.append("XC");
-            csum -= C - X;
-        }
-        while (csum >= L) {
-            ans.append("L");
-            csum -= L;
-        }
-        while (csum >= L - X) {
-            ans.append("XL");
-            csum -= L - X;
-        }
-        while (csum >= X) {
-            ans.append("X");
-            csum -= X;
-        }
-        while (csum >= X - I) {
-            ans.append("IX");
-            csum -= X - I;
-        }
-        while (csum >= V) {
-            ans.append("V");
-            csum -= V;
-        }
-        while (csum >= V - I) {
-            ans.append("IV");
-            csum -= V - I;
-        }
-        while (csum >= I) {
-            ans.append("I");
-            csum -= I;
-        }
-        return ans.toString();
+        return map.get(part) + convertToRoman(sum - part);
     }
 }

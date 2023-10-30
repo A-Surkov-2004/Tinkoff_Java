@@ -1,6 +1,7 @@
 package edu.hw3;
 
 import java.util.Comparator;
+import java.util.Map;
 import java.util.TreeMap;
 
 public class Task7 {
@@ -9,10 +10,10 @@ public class Task7 {
 
     public class Tree {
 
+        Map<String, String> map = new TreeMap<>(Comparator.nullsFirst(new MyComparator()));
+
         Tree() {
         }
-
-        TreeMap<String, String> map = new TreeMap<>(Comparator.nullsFirst(new MyComparator()));
 
         void add(String key, String s) {
             map.put(key, s);
