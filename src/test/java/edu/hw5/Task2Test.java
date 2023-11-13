@@ -2,7 +2,6 @@ package edu.hw5;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -46,7 +45,7 @@ public class Task2Test {
         Date date = new Date(124, 0, 1);
 
         // when
-        String ans = t2.ClosestFriday13(date);
+        String ans = t2.closestFriday13(date);
 
         // then
         assertThat(ans)
@@ -61,7 +60,7 @@ public class Task2Test {
         Date date = new Date(124, 10, 1);
 
         // when
-        String ans = t2.ClosestFriday13(date);
+        String ans = t2.closestFriday13(date);
 
         // then
         assertThat(ans)

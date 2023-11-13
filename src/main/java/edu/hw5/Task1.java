@@ -1,20 +1,20 @@
 package edu.hw5;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Task1 {
 
     private final static Logger LOGGER = LogManager.getLogger();
 
-    public String sessionTime(String[] strings){
+    public String sessionTime(String[] strings) {
 
-        if (strings == null || strings.length == 0){
+        if (strings == null || strings.length == 0) {
             return "0с";
         }
 
@@ -30,14 +30,14 @@ public class Task1 {
                 Duration duration = Duration.between(t1.toInstant(), t2.toInstant());
                 global = global.plus(duration);
             } catch (ParseException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
             }
         }
         String ans = global.dividedBy(strings.length).toString();
         ans = ans.replace("H", "ч ")
             .replace("M", "м")
             .replace("S", "с")
-            .replace("PT","");
+            .replace("PT", "");
         LOGGER.info(ans);
         return ans;
     }
