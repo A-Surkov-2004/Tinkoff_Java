@@ -45,7 +45,6 @@ public class Task3 {
             SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
             Date d = sf.parse(string);
             ld = LocalDate.ofInstant(d.toInstant(), ZoneId.of(UTC));
-            ld = ld.plusDays(1);
             return Optional.of(ld);
         } catch (ParseException e) {
         }
@@ -54,7 +53,6 @@ public class Task3 {
             SimpleDateFormat sf = new SimpleDateFormat("dd/MM/yyyy");
             Date d = sf.parse(string);
             ld = LocalDate.ofInstant(d.toInstant(), ZoneId.of(UTC));
-            ld = ld.plusDays(1);
             if (ld.getYear() < SHORT_FORMAT_BORDER) {
                 ld = ld.plusYears(SHORT_FORMAT_EXTENSION).plusDays(2);
             }
