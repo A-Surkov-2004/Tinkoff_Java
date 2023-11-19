@@ -11,11 +11,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class Task2Test {
     @Test
-    @DisplayName("Начало")
+    @DisplayName("Копирование")
     void test1() {
         // given
         Map<String, String> map = new HashMap<>();
-        Path p = Path.of("src\\main\\java\\edu\\hw6\\Task2\\Tinkoff Bank Biggest Secret.txt");
+        Path p = Path.of("src","main","java","edu","hw6","Task2","Tinkoff Bank Biggest Secret.txt");
 
 
         // when

@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 
 public class Diskmap {
 
-    private final static String PATH = "src\\main\\java\\edu\\hw6\\Task1\\SavedMap.txt";
+    private final static Path PATH = Path.of("src", "main", "java", "edu", "hw6", "Task1", "SavedMap.txt");
     private final static Logger LOGGER = LogManager.getLogger();
 
     public Diskmap(Map<String, String> map) {
@@ -20,9 +20,8 @@ public class Diskmap {
     }
 
     public void saveMap(Map<String, String> map) {
-        Path p = Path.of(PATH);
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(p.toFile()))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(PATH.toFile()))) {
 
             for (String i : map.keySet()) {
                 writer.write(i + ":" + map.get(i) + "\n");
@@ -33,10 +32,9 @@ public class Diskmap {
     }
 
     public Map<String, String> loadMap() {
-        Path p = Path.of(PATH);
         Map<String, String> map = new HashMap<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(p.toFile()))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(PATH.toFile()))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] splited = line.split(":");

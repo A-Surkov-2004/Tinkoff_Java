@@ -18,8 +18,7 @@ public class Task4Test {
     void test5() throws IOException {
         // given
         Map<String, String> map = new HashMap<>();
-        Path p = Path.of("src\\main\\java\\edu\\hw6\\Task4\\Files\\newFile1.txt");
-
+        Path p = Path.of("src", "main", "java", "edu", "hw6", "Task4", "Files", "newFile1.txt");
 
         // when
         Task4 t4 = new Task4();

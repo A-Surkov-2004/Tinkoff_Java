@@ -18,14 +18,14 @@ public class Task3 {
 
 
 
-    public List<String> search(String p, DirectoryStream.Filter<Path> filter) {
+    public List<Path> search(Path p, DirectoryStream.Filter<Path> filter) {
 
-        Path dir = Path.of(p);
-        List<String> result = new ArrayList<>();
+        Path dir = p;
+        List<Path> result = new ArrayList<>();
 
         try (DirectoryStream<Path> entries = Files.newDirectoryStream(dir, filter)) {
             //entries.forEach(System.out::println);
-            entries.forEach((i) -> result.add(i.toString()));
+            entries.forEach(result::add);
             LOGGER.info(result);
         } catch (Exception e) {
 
