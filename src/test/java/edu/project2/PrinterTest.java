@@ -16,8 +16,8 @@ public class PrinterTest {
 
         printer.printMap(map);
 
-        Solver s = new Solver();
-        char[][] solved = s.solve(map);
+        Solver s = new Solver(map);
+        char[][] solved = s.solve();
 
         printer.printMap(map);
     }

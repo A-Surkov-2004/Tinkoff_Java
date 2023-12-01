@@ -15,8 +15,8 @@ public class GeneratorTest {
 
             //when
             char [][] map = gen.generate();
-            Solver s = new Solver();
-            char[][] solved = s.solve(map);
+            Solver s = new Solver(map);
+            char[][] solved = s.solve();
 
             // then
             assertThat(s.solved)
@@ -34,8 +34,8 @@ public class GeneratorTest {
 
             //when
             char [][] map = gen.generate();
-            Solver s = new Solver();
-            char[][] solved = s.solve(map);
+            Solver s = new Solver(map);
+            char[][] solved = s.solve();
 
             // then
             assertThat(s.solved)
@@ -51,8 +51,8 @@ public class GeneratorTest {
 
         //when
         char [][] map = gen.generate();
-        Solver s = new Solver();
-        char[][] solved = s.solve(map);
+        Solver s = new Solver(map);
+        char[][] solved = s.solve();
 
         // then
         assertThat(s.solved)

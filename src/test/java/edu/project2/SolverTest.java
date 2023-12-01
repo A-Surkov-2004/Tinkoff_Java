@@ -24,9 +24,9 @@ public class SolverTest {
         };
 
         //when
-        Solver s = new Solver();
+        Solver s = new Solver(map);
         try {
-            char[][] solved = s.solve(map);
+            char[][] solved = s.solve();
         }catch (Exception ignored){}
 
 
@@ -54,8 +54,8 @@ public class SolverTest {
         };
 
         //when
-        Solver s = new Solver();
-        char[][] solved = s.solve(map);
+        Solver s = new Solver(map);
+        char[][] solved = s.solve();
 
 
         // then
