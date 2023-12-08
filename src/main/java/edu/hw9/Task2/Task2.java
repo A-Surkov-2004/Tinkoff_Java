@@ -1,8 +1,5 @@
 package edu.hw9.Task2;
 
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,12 +9,13 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveTask;
 import java.util.regex.Pattern;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Task2 {
 
     private final static Logger LOGGER = LogManager.getLogger();
     private final List<Path> answers = new ArrayList<>();
-
 
     public List<Path> filesMoreThenN(Path p, int n) {
         final int numberOfProcessors = Runtime.getRuntime().availableProcessors();
@@ -37,12 +35,12 @@ public class Task2 {
         return answers;
     }
 
-     private class MoreThenN extends RecursiveTask<Integer> {
+    private class MoreThenN extends RecursiveTask<Integer> {
 
         private final Path p;
         private final int n;
 
-        public MoreThenN(Path p, int n) {
+        private MoreThenN(Path p, int n) {
             this.p = p;
             this.n = n;
         }
@@ -62,15 +60,14 @@ public class Task2 {
 
                         MoreThenN f = new MoreThenN(i, n);
                         counter += f.compute();
-                    }
-                    else {
+                    } else {
                         counter++;
                     }
                 }
             } catch (Exception e) {
                 LOGGER.error(e);
             }
-            if (counter > n){
+            if (counter > n) {
                 answers.add(p);
             }
             return counter;
@@ -82,7 +79,7 @@ public class Task2 {
         private final Path p;
         private final String glob;
 
-        public FindGlob(Path p, String glob) {
+        private FindGlob(Path p, String glob) {
             this.p = p;
             this.glob = glob;
         }
@@ -100,11 +97,10 @@ public class Task2 {
                     if (Files.isDirectory(i)) {
 
                         FindGlob f = new FindGlob(i, glob);
-                        f.compute();
-                    }
-                    else {
-                        LOGGER.info(glob);
-                        if (Pattern.matches("." + glob + "$", i.toString())){
+                        f.fork();
+                        f.join();
+                    } else {
+                        if (Pattern.matches("." + glob + "$", i.toString())) {
                             answers.add(i);
                         }
                     }

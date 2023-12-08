@@ -1,8 +1,8 @@
 package edu.hw9.Task3Test;
 
-import edu.hw9.Task2.Task3.Generator;
-import edu.hw9.Task2.Task3.Printer;
-import edu.hw9.Task2.Task3.Solver;
+import edu.hw9.Task3.Generator;
+import edu.hw9.Task3.Printer;
+import edu.hw9.Task3.Solver;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

@@ -15,11 +15,14 @@ public class Task2Test {
     void test1() {
         Task2 t2 = new Task2();
 
-        Path p = Path.of("src","main","java", "edu", "hw9", "Task2", "Tree");
+        Path path = Path.of("src","main","java", "edu", "hw9", "Task2", "Tree");
 
-        List<Path> ans = t2.filesMoreThenN(p, 1000);
+        List<Path> ans = t2.filesMoreThenN(path, 1000);
 
         LOGGER.trace(ans);
+        assertThat(ans).containsExactly(Path.of("src","main","java","edu","hw9","Task2","Tree","Files1101"),
+            path
+        );
     }
 
     @Test
@@ -28,8 +31,12 @@ public class Task2Test {
 
         Path p = Path.of("src","main","java", "edu", "hw9", "Task2", "Tree");
 
-        List<Path> ans = t2.findGlob(p, "*.txt");
+        List<Path> ans = t2.findGlob(p, "*.jpg");
 
         LOGGER.trace(ans);
+        assertThat(ans).containsExactly(Path.of("src","main","java","edu","hw9","Task2","Tree","Files1101", "Small_photo.jpg"),
+            Path.of("src","main","java","edu","hw9","Task2","Tree","RandomFiles", "dog.jpg"),
+            Path.of("src","main","java","edu","hw9","Task2","Tree","RandomFiles", "kartinki-nyashnye-kotiki-cat-16.jpg"));
+
     }
 }
