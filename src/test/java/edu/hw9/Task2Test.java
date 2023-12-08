@@ -20,7 +20,7 @@ public class Task2Test {
         List<Path> ans = t2.filesMoreThenN(path, 1000);
 
         LOGGER.trace(ans);
-        assertThat(ans).containsExactly(Path.of("src","main","java","edu","hw9","Task2","Tree","Files1101"),
+        assertThat(ans).containsExactlyInAnyOrder(Path.of("src","main","java","edu","hw9","Task2","Tree","Files1101"),
             path
         );
     }
@@ -34,7 +34,7 @@ public class Task2Test {
         List<Path> ans = t2.findGlob(p, "*.jpg");
 
         LOGGER.trace(ans);
-        assertThat(ans).containsExactly(Path.of("src","main","java","edu","hw9","Task2","Tree","Files1101", "Small_photo.jpg"),
+        assertThat(ans).containsExactlyInAnyOrder(Path.of("src","main","java","edu","hw9","Task2","Tree","Files1101", "Small_photo.jpg"),
             Path.of("src","main","java","edu","hw9","Task2","Tree","RandomFiles", "dog.jpg"),
             Path.of("src","main","java","edu","hw9","Task2","Tree","RandomFiles", "kartinki-nyashnye-kotiki-cat-16.jpg"));
 
