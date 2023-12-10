@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class GeneratorTest {
+public class SolverTest {
     @Test
     @DisplayName("Стресс тест 1")
     void test1() throws Exception {
