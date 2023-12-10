@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -14,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-//import java.util.concurrent.TimeUnit;
+
 
 public class Drawer {
 
@@ -49,7 +50,7 @@ public class Drawer {
         f.add(jPanel);
         f.setVisible(true);
 
-        /*
+        ///*
         while (f.isActive()) {
             TimeUnit.SECONDS.sleep(1);
         }

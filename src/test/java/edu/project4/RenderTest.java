@@ -53,7 +53,7 @@ public class RenderTest {
 
     }
 
-    //Пресеты (для удобного просмотра раскоментить конец drawer)
+    //Пресеты (раскоментить ainter.draw(pixels); для показа)
     @Test
     @DisplayName("Синее сердце")
     void test1() throws Exception {
@@ -76,7 +76,7 @@ public class RenderTest {
         Pixel[][] pixels = render.render(afinGen.genAfin(100), 10000, 1200, mod);
         pixels = render.gammaCor(pixels);
         Drawer painter = new Drawer(path);
-        painter.draw(pixels);
+        //painter.draw(pixels);
     }
 
     @Test
@@ -96,7 +96,7 @@ public class RenderTest {
         Pixel[][] pixels = render.render(afinGen.genAfin(60), 1000, 1000, mod);
         pixels = render.gammaCor(pixels);
         Drawer painter = new Drawer(path);
-        painter.draw(pixels);
+        //painter.draw(pixels);
     }
 
     @Test
@@ -118,7 +118,7 @@ public class RenderTest {
         Pixel[][] pixels = render.render(afinGen.genAfin(60), 1000, 1000, mod);
         pixels = render.gammaCor(pixels);
         Drawer painter = new Drawer(path);
-        painter.draw(pixels);
+        //painter.draw(pixels);
     }
 
     @Test
@@ -141,6 +141,6 @@ public class RenderTest {
         Pixel[][] pixels = render.render(afinGen.genAfin(100), 1000, 1000, mod);
         pixels = render.gammaCor(pixels);
         Drawer painter = new Drawer(path);
-        painter.draw(pixels);
+        //painter.draw(pixels);
     }
 }
