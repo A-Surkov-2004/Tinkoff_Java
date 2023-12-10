@@ -14,6 +14,7 @@ public class Printer {
     private final static Logger LOGGER = LogManager.getLogger();
 
     public void printMap(char[][] map) {
+
         StringBuilder string = new StringBuilder();
         string.append('\n');
         for (char[] i : map) {

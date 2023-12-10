@@ -19,6 +19,7 @@ public class Generator {
     public Generator(int n) {
         this.n = n * 2 + 1;
         this.m = n * 2 + 1;
+
     }
 
     public char[][] generate() {

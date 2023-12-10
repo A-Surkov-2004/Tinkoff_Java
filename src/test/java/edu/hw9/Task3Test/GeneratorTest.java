@@ -31,6 +31,7 @@ public class GeneratorTest {
     void test2() throws Exception {
         for (int i = 1; i < 100; i++){
 
+
             // given
             Generator gen = new Generator(i);
 

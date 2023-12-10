@@ -15,6 +15,7 @@ public class PrinterTest {
         Printer printer = new Printer();
 
         Generator gen = new Generator(17);
+
         char [][] map = gen.generate();
 
         printer.printMap(map);

@@ -38,6 +38,7 @@ public class Solver {
     public char[][] solve() {
 
         for (int[] i : was) {
+
             Arrays.fill(i, 0);
         }
 
